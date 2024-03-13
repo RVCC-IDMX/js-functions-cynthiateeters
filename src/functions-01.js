@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable no-unused-vars */
 /*
  * functions-01.js
@@ -18,7 +19,16 @@
  */
 function nameShuffle(str) {
   // write your code here & return value
+  const words = str.split(' ');
+  const firstName = words[0];
+  const lastName = words[1];
+  console.log(firstName, lastName);
+  const newStr = `${lastName}, ${firstName}`;
+  console.log(newStr);
+  return newStr;
 }
+
+nameShuffle('John Smith');
 
 /**
  * returns true if a pair of strings is a "strange pair",
@@ -36,6 +46,12 @@ function nameShuffle(str) {
  */
 function isStrangePair(str1, str2) {
   // write your code here & return value
+  const str1First = str1[0];
+  const str2First = str2[0];
+  const str1Last = str1[str1.length - 1];
+  const str2Last = str2[str2.length - 1];
+  const bool = (str1First === str2Last) && (str2First === str1Last);
+  return bool;
 }
 
 /**
@@ -48,7 +64,11 @@ function isStrangePair(str1, str2) {
  */
 function convertToDecimal(percent) {
   // write your code here & return value
+  const newStr = percent.slice(0, -1);
+  return (Number(newStr) / 100);
 }
+
+convertToDecimal('98.6%');
 
 /**
  * Returns true if two arrays sum up to the same number
@@ -57,10 +77,20 @@ function convertToDecimal(percent) {
  * @returns {boolean}
  * example: [1, 2, 3, 4], [4, 3, 2, 1] returns true
  * example: [0, 0, 0, 0, 0], [1, 1, 1, 1] returns false
+ * example: [2,2] , [1, 1, 1, 1,] return true
  * example: [1, 2, 3, 4], [4, 3, 2, 1, 5] returns false
  */
 function checkSameSum(a1, a2) {
   // write your code here & return value
+  let total1 = 0;
+  for (let index = 0; index < a1.length; index++) {
+    total1 += a1[index];
+  }
+  let total2 = 0;
+  for (let index = 0; index < a2.length; index++) {
+    total2 += a2[index];
+  }
+  return total1 === total2;
 }
 
 /**
@@ -72,7 +102,14 @@ function checkSameSum(a1, a2) {
  */
 function saveLogin(name) {
   // write your code here
+  function logName() {
+    return name;
+  }
+  return logName;
 }
+
+const loggedName = saveLogin('Fletcher');
+console.log(loggedName());
 
 module.exports = {
   nameShuffle,
